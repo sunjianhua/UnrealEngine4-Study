@@ -4,9 +4,18 @@
 
 ## 基本概念
 
-### 命令行参数
+### 命令行参数 (2016-10-12 ~ 2016-10-12)
 1. 获得命令行：FCommandLine::Get()
 2. 解析命令行：FParse::Value
 
+### 配置文件 (2016-10-13 ~ 2016-10-13)
+1. 声明配置文件：FConfigFile
+2. 打开配置文件：FConfigFile::Read
+3. 获得分组内容：FConfigFile::Find
+4. 配置文件分组：FConfigSection
+5. 获得分组子项: FConfigSection::Find
+
+### 路径信息 (2016-10-13 ~ 2016-10-13)
+1. FPaths::GameDir()
 
 ## 代码到蓝图
