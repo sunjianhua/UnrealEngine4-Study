@@ -23,4 +23,7 @@
 
 ### ModuleRules (2016-10-14 ~ )
 
+### 定时器 (2016-10-17 ~ 2016-10-17)
+GetWorldTimerManager().SetTimer
+
 ## 代码到蓝图
