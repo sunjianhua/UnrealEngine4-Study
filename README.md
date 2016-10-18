@@ -26,4 +26,7 @@
 ### 定时器 (2016-10-17 ~ 2016-10-17)
 GetWorldTimerManager().SetTimer
 
+### 编译代码 (2016-10-18 ~ 2016-10-18)
+UnrealEngine 4 下载源码，需要在UnrealEngine账户把自己的github账号设置上，不然在github看不到项目
+
 ## 代码到蓝图
