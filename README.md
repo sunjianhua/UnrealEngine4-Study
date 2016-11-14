@@ -21,12 +21,51 @@
 ### Engine\Source\Runtime\Core\Public\Misc (2016-10-14 ~ 2016-10-14)
 1. 想到有什么基本功能要写的，就先去这个目录下查一下，是否已经实现
 
-### ModuleRules (2016-10-14 ~ )
-
 ### 定时器 (2016-10-17 ~ 2016-10-17)
-GetWorldTimerManager().SetTimer
+GetWorldTimerManager().SetTimer(??????)
 
 ### 编译代码 (2016-10-18 ~ 2016-10-18)
 UnrealEngine 4 下载源码，需要在UnrealEngine账户把自己的github账号设置上，不然在github看不到项目
 
+## Additional Non-asset Directories to Package 取资源
+FString Contents;
+FString Filename = FPaths::GameContentDir() + TEXT("Resource/conf/role/Role.conf");
+if (FFileHelper::LoadFileToString(Contents, *Filename))
+{
+	// do something with Contents
+}
+
+## 线程锁定修改单值
+FPlatformAtomics::InterlockedExchange(变量指针, 新值);
+
+##互斥锁
+FScopeLock ScopeLock(&Lock);
+
+## 格式化字符串
+FString::Printf(TEXT("%s 你好。"), TEXT("朋友"))
+
+## 输出日志
+UE_LOG(LogTemp, Warning, TEXT("%s 你好。"), TEXT("朋友"));
+
+## 输出信息到屏幕
+GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("朋友 你好。"));
+
+## 输出字符串到屏幕
+DrawDebugString
+UKismetSystemLibrary::DrawDebugString
+
+## 在代码显示/隐藏鼠标的一个方法
+FSlateApplication::Get().GetPlatformApplication()->Cursor->Show(false);
+
+## 鼠标检测
+UWorld::LineTraceSingleByChannel
+FMath::LinePlaneIntersection
+APlayerController::GetHitResultAtScreenPosition
+APlayerController::GetHitResultUnderCursor
+
+## 剪贴板内容拷贝
+FPlatformMisc::ClipboardCopy
+
 ## 代码到蓝图
+
+### ModuleRules (2016-10-14 ~ )
