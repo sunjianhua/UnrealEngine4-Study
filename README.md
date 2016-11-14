@@ -2,6 +2,8 @@
 
 项目以目录划分，只上传新增代码，不包含Unreal Engine4创建项目自动生成文件
 
+常用的：UGameplayStatics
+
 ## 基本概念
 
 ### 命令行参数 (2016-10-12 ~ 2016-10-12)
@@ -66,6 +68,16 @@ APlayerController::GetHitResultUnderCursor
 ## 剪贴板内容拷贝
 FPlatformMisc::ClipboardCopy
 
+## 设置AActor旋转
+1. USceneComponent* SceneComponent = AActor::GetRootComponent();
+2. SceneComponent->SetRelativeRotation(???);
+3. SceneComponent->RelativeRotation = ???;
+4. AActor::ReregisterAllComponents();
+
+## 获得当前场景所有AActor
+UGameplayStatics::GetAllActorsOfClass
+for (FActorIterator It(GetWorld()); It; ++It)
+
 ## 代码到蓝图
 
-### ModuleRules (2016-10-14 ~ )
+## ModuleRules (2016-10-14 ~ )
