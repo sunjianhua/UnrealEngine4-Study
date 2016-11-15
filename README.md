@@ -78,6 +78,37 @@ FPlatformMisc::ClipboardCopy
 UGameplayStatics::GetAllActorsOfClass
 for (FActorIterator It(GetWorld()); It; ++It)
 
+## 长短文件名 UE4里对短文件名<不包含路径信息>会进行目录遍历，比较耗时，长文件名<包含路径信息>基本是定位查找，比较快
+FPackageName::IsShortPackageName
+
+UGameplayStatics::OpenLevel 会根据长短文件名做不同文件查找操作
+
+## 四种加载资源方式
+### 1. 如果该蓝图有C++类(或者说是从C++类创建的蓝图),直接进行加载
+ATemp* spawnActor = GetWorld()->SpawnActor<ATemp>(ATemp::StaticClass());
+### 2. 通过ConstructorHelpers加载
+static ConstructorHelpers::FClassFinder<AActor> bpClass(TEXT("/Game/BluePrint/TestObj"));  
+if(bpClass.Class != NULL)
+{
+    GetWorld()->SpawnActor(bpClass.Class);
+}
+### 3. 通过FStringAssetReference加载
+FStringAssetReference asset = "Blueprint'/Game/BluePrint/TestObj.TestObj'";  
+    UObject* itemObj = asset.ResolveObject();  
+    UBlueprint* gen = Cast<UBlueprint>(itemObj);  
+    if (gen != NULL)   
+    {
+        AActor* spawnActor = GetWorld()->SpawnActor<AActor>(gen->GeneratedClass);  
+    }
+### 4. 通过StaticLoadObject加载
+UObject* loadObj = StaticLoadObject(UBlueprint::StaticClass(), NULL, TEXT("Blueprint'/Game/BluePrint/TestObj.TestObj'"));  
+if (loadObj != nullptr)
+{
+    UBlueprint* ubp = Cast<UBlueprint>(loadObj);  
+    AActor* spawnActor = GetWorld()->SpawnActor<AActor>(ubp->GeneratedClass);  
+    UE_LOG(LogClass, Log, TEXT("Success"));  
+}
+
 ## 代码到蓝图
 
 ## ModuleRules (2016-10-14 ~ )
