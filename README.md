@@ -17,16 +17,13 @@
 4. 配置文件分组：FConfigSection
 5. 获得分组子项: FConfigSection::Find
 
-### 路径信息 (2016-10-13 ~ 2016-10-13)
-1. FPaths::GameDir()
-
-### Engine\Source\Runtime\Core\Public\Misc (2016-10-14 ~ 2016-10-14)
+### Engine\Source\Runtime\Core\Public\Misc
 1. 想到有什么基本功能要写的，就先去这个目录下查一下，是否已经实现
 
-### 定时器 (2016-10-17 ~ 2016-10-17)
-GetWorldTimerManager().SetTimer(??????)
+### 定时器
+GetWorldTimerManager().SetTimer
 
-### 编译代码 (2016-10-18 ~ 2016-10-18)
+### 编译代码
 UnrealEngine 4 下载源码，需要在UnrealEngine账户把自己的github账号设置上，不然在github看不到项目
 
 ## Additional Non-asset Directories to Package 取资源
@@ -75,13 +72,34 @@ FPlatformMisc::ClipboardCopy
 4. AActor::ReregisterAllComponents();
 
 ## 获得当前场景所有AActor
-UGameplayStatics::GetAllActorsOfClass
-for (FActorIterator It(GetWorld()); It; ++It)
+1. UGameplayStatics::GetAllActorsOfClass
+2. for (FActorIterator It(GetWorld()); It; ++It)
 
 ## 长短文件名 UE4里对短文件名<不包含路径信息>会进行目录遍历，比较耗时，长文件名<包含路径信息>基本是定位查找，比较快
 FPackageName::IsShortPackageName
 
 UGameplayStatics::OpenLevel 会根据长短文件名做不同文件查找操作
+
+## Converts a long package name to a file name with the supplied extension
+FPackageName::LongPackageNameToFilename
+
+### 路径信息
+1. FPaths::GameDir()
+2. FPaths::GameSavedDir()
+3. ......
+
+## 判断文件是否存在
+1. FPlatformFileManager::Get().GetPlatformFile().FileExists()
+2. IFileManager::Get().FileExists
+
+## 判断目录是否存在
+1. IFileManager::Get().DirectoryExists
+
+## 获取目录下所有文件或子目录名
+IFileManager::Get().FindFiles
+
+## 删除文件
+IFileManager::Get().Delete
 
 ## 四种加载资源方式
 ### 1. 如果该蓝图有C++类(或者说是从C++类创建的蓝图),直接进行加载
@@ -105,9 +123,12 @@ UObject* loadObj = StaticLoadObject(UBlueprint::StaticClass(), NULL, TEXT("Bluep
 if (loadObj != nullptr)
 {
     UBlueprint* ubp = Cast<UBlueprint>(loadObj);  
-    AActor* spawnActor = GetWorld()->SpawnActor<AActor>(ubp->GeneratedClass);  
-    UE_LOG(LogClass, Log, TEXT("Success"));  
+    AActor* spawnActor = GetWorld()->SpawnActor<AActor>(ubp->GeneratedClass);
+    UE_LOG(LogClass, Log, TEXT("Success"));
 }
+
+## 获得UE4 版本
+GEngineVersion
 
 ## 代码到蓝图
 
