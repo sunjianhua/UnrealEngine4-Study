@@ -130,6 +130,16 @@ if (loadObj != nullptr)
 ## 获得UE4 版本
 GEngineVersion
 
+## 定时器回调
+FTimerHandle TimerHandle;
+FTimerDelegate TimerDelegate;
+TimerDelegate.BindLambda([this, HitMeshComponent] {});
+
+GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 0.5, false);
+
+## 显示或关闭组件边框线
+UPrimitiveComponent::SetRenderCustomDepth
+
 ## 代码到蓝图
 
 ## ModuleRules (2016-10-14 ~ )
