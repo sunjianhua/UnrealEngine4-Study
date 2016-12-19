@@ -140,6 +140,56 @@ GetWorld()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 0.5, false);
 ## 显示或关闭组件边框线
 UPrimitiveComponent::SetRenderCustomDepth
 
+## 时间线
+蓝图组件：TimeLine
+
 ## 代码到蓝图
 
 ## ModuleRules (2016-10-14 ~ )
+
+
+https://docs.unrealengine.com/latest/CHN/Engine/Rendering/Materials/HowTo/CreatingLayeredMaterials/index.html
+WorldAlignedBlend
+WorldAlignedNormal
+WorldAlignedTexture
+SlopeMask
+MatlayerBlend_Simple
+MatlayerBlend_Standard
+ComponentMask
+MakeMaterialAttributes
+MatLayerBlend_StandardWithDisplacement
+【
+WorldAlignedTexture：全局一致纹理【函数用于在全局空间中的对象表面上平铺纹理，此平铺与该对象的大小或旋转无关。此函数允许您指定投射纹理的方向，并按全局单位（而非纹理大小的百分比）进行比例调整】
+因为此函数在全局空间内平铺纹理，所以需要注意，任何以此方式处理纹理的动画对象都会发生纹理“漂浮”，即纹理保持原位置不动，而对象在其下方滑动
+】
+【
+HeightLerp：高度插值【函数允许您根据高度贴图和过渡阶段值，在 2 个纹理之间执行线性插值。这允许您沿着发生插值的高度贴图来调整值】
+】
+PixelDepth：像素深度【表达式输出当前所渲染像素的深度，即从摄像机开始计算的距离】
+SceneDepth：场景深度【类似于 PixelDepth（像素深度），PixelDepth（像素深度）只能在当前所绘制像素处进行深度取样，而 SceneDepth（场景深度）可以在 任何位置 进行深度取样】
+Divide
+LinearInterpolate
+FuzzyShading1
+Clamp
+Landscape Layer Sample
+Bump Offset: 设置凹凸贴图偏移【https://docs.unrealengine.com/latest/CHN/Engine/Rendering/Materials/HowTo/BumpOffset/index.html】
+Panner：产生 UV 坐标动画【https://docs.unrealengine.com/latest/CHN/Engine/Rendering/Materials/HowTo/AnimatingUVCoords/index.html】
+后期处理体积【Post Process Volume】
+Detail Texturing：细节纹理化【https://docs.unrealengine.com/latest/CHN/Engine/Rendering/Materials/HowTo/DetailTexturing/index.html】
+
+https://docs.unrealengine.com/latest/CHN/Engine/Rendering/Materials/ExpressionReference/Vector/index.html#cameravectorws
+https://docs.unrealengine.com/latest/CHN/Engine/Rendering/Materials/HowTo/Making_Functions/index.html
+{
+	ActorPositionWS：Actor 全局空间位置【输出 Vector3 (RGB) 数据，该数据代表使用此材质的对象在全局空间中的位置】
+	CameraWorldPosition：摄像机全局空间位置【表达式输出三通道矢量值，该值代表摄像机在全局空间中的位置】
+	CameraVectorWS：摄像机全局空间矢量【表达式输出一个三通道矢量值，该值代表摄像机相对于表面的方向，即从像素到摄像机的方向】
+}
+
+https://docs.unrealengine.com/latest/CHN/Engine/Rendering/Materials/HowTo/Fresnel/index.html
+
+坐标表达式
+https://docs.unrealengine.com/latest/CHN/Engine/Rendering/Materials/ExpressionReference/Coordinates/index.html
+
+LandscapeLayerWeight：地形图层权重节点【表现允许材质网络进行混合。混合的基础是从材质应用的地形上所获取的相关图层权重】
+LandscapeLayerSample：这个会产生绘制层
+LandscapeLayerBlend：【LB Height Blend，这个选项能产生沙子层里的沙子落在岩石层里的岩石缝隙里？？？？？？】
