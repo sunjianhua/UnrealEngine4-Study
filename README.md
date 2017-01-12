@@ -147,6 +147,49 @@ UPrimitiveComponent::SetRenderCustomDepth
 
 ## ModuleRules (2016-10-14 ~ )
 
+【地形学习】
+
+材质编辑器：主要是把颜色作为基本运算单元，做各种计算【+-*/%】，红色：#FF0000 绿色：#00FF00，那么这两个相加就是：#FFFF00。图片由各种颜色组成，都可以对应到10101010，除了颜色本身外，颜色一般标识为R，G，B，额外参数是Alpha值，控制颜色混合时的权重
+地形编辑器：主要是把顶点作为基本运算单元，做各种计算【+-*/%】，比如一个山高1000，另一个山高1000，那么这两个山高相加就是2000，顶点一般在三维空间表示为X，Y，Z，额外参数是W ？？？
+
+颜色和顶点在计算机里都是浮点数的集合，所以可以很方便进行各种运算，和各种插值操作，比如一个山高1000，另一个山高2000，两个山之间做线性插值，那么在两个山之间的中点高为1500，比如一个颜色是红色，另一个绿色，那么在
+
+根据以上，所以顶点和颜色可以互相转换，顶点可以转换为颜色，颜色可以转换为顶点，比如
+Generator
+【
+	Radial Grad: 产生一个圆锥山体
+	Voronoi: 坑坑洼洼的地形
+	Constant：和别的山做运算，让别的山保持山形状的情况下，调节山高
+	Gradient：改变山体的朝向，让山体变的圆滑和降低高度，可以做到地形的切片效果
+	Color Generator：根据山体高度生成颜色
+	Layout Generator：自己绘制山体的走势
+	Perlin Noise：数字化造山
+	Advanced Perlin：数字化造山，增强版
+】
+
+Combiner
+【
+	Combiner：组合不同的地形，有几种组合方法，合理的利用，可以中和尖的，拉高低的，降低低的
+】
+
+Filter
+【
+	Clamp：改变山的高度相关，不光是整体山高，比如可以让山顶扩大，山变的陡峭，增加山的垂直高度，降低地平面
+	Simple Transofrms：改变山的峡谷、高原、山体等
+	Terrace：梯田？？？
+	Curves：曲线，这个好玩，无意义？？？
+	Simple Displacement：旋转地形，让地形偏移
+	Ramp：把地形转换为波纹
+	Height Splitter：把地形转换为环形
+	Add Noise：增加地形的坑坑洼洼
+	Flipper：左右或上下翻转地形
+	Equalizer：降低山的尖度？？？
+	Blue：让山的尖度变圆润？？？
+	Expander：使山体高低不平的逐渐填平
+	Inverter：让高的变低，低的变高
+	Bias/Gain: 让高的更高，低的更低
+】
+
 
 https://docs.unrealengine.com/latest/CHN/Engine/Rendering/Materials/HowTo/CreatingLayeredMaterials/index.html
 WorldAlignedBlend
