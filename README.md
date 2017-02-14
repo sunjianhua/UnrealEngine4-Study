@@ -37,7 +37,8 @@ if (FFileHelper::LoadFileToString(Contents, *Filename))
 ## 线程锁定修改单值
 FPlatformAtomics::InterlockedExchange(变量指针, 新值);
 
-##互斥锁
+## 互斥锁
+FCriticalSection Lock;
 FScopeLock ScopeLock(&Lock);
 
 ## 格式化字符串
@@ -52,6 +53,9 @@ GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("朋友 你好�
 ## 输出字符串到屏幕
 DrawDebugString
 UKismetSystemLibrary::DrawDebugString
+
+## 输出到文件
+FOutputDevice::Logf
 
 ## 在代码显示/隐藏鼠标的一个方法
 FSlateApplication::Get().GetPlatformApplication()->Cursor->Show(false);
@@ -86,7 +90,8 @@ FPackageName::LongPackageNameToFilename
 ### 路径信息
 1. FPaths::GameDir()
 2. FPaths::GameSavedDir()
-3. ......
+3. FPaths::ProfilingDir()
+4. ......
 
 ## 判断文件是否存在
 1. FPlatformFileManager::Get().GetPlatformFile().FileExists()
@@ -94,6 +99,9 @@ FPackageName::LongPackageNameToFilename
 
 ## 判断目录是否存在
 1. IFileManager::Get().DirectoryExists
+
+## 创建目录
+IFileManager::Get().MakeDirectory
 
 ## 获取目录下所有文件或子目录名
 IFileManager::Get().FindFiles
@@ -104,30 +112,33 @@ IFileManager::Get().Delete
 ## 四种加载资源方式
 ### 1. 如果该蓝图有C++类(或者说是从C++类创建的蓝图),直接进行加载
 ATemp* spawnActor = GetWorld()->SpawnActor<ATemp>(ATemp::StaticClass());
+
 ### 2. 通过ConstructorHelpers加载
 static ConstructorHelpers::FClassFinder<AActor> bpClass(TEXT("/Game/BluePrint/TestObj"));  
 if(bpClass.Class != NULL)
 {
     GetWorld()->SpawnActor(bpClass.Class);
 }
+
 ### 3. 通过FStringAssetReference加载
 FStringAssetReference asset = "Blueprint'/Game/BluePrint/TestObj.TestObj'";  
     UObject* itemObj = asset.ResolveObject();  
     UBlueprint* gen = Cast<UBlueprint>(itemObj);  
     if (gen != NULL)   
     {
-        AActor* spawnActor = GetWorld()->SpawnActor<AActor>(gen->GeneratedClass);  
+        AActor* spawnActor = GetWorld()->SpawnActor<AActor>(gen->GeneratedClass);
     }
+
 ### 4. 通过StaticLoadObject加载
 UObject* loadObj = StaticLoadObject(UBlueprint::StaticClass(), NULL, TEXT("Blueprint'/Game/BluePrint/TestObj.TestObj'"));  
 if (loadObj != nullptr)
 {
-    UBlueprint* ubp = Cast<UBlueprint>(loadObj);  
+    UBlueprint* ubp = Cast<UBlueprint>(loadObj);
     AActor* spawnActor = GetWorld()->SpawnActor<AActor>(ubp->GeneratedClass);
     UE_LOG(LogClass, Log, TEXT("Success"));
 }
 
-## 获得UE4 版本
+## 获得 UE4 版本
 GEngineVersion
 
 ## 定时器回调
@@ -142,6 +153,45 @@ UPrimitiveComponent::SetRenderCustomDepth
 
 ## 时间线
 蓝图组件：TimeLine
+
+## 转换屏幕位置到3D空间
+FSceneView::DeprojectScreenToWorld
+UGameplayStatics::DeprojectScreenToWorld
+
+## 获得字符串宽度
+const TSharedRef< FSlateFontMeasure > FontMeasure = FSlateApplication::Get().GetRenderer()->GetFontMeasureService();
+FVector2D Size = FontMeasure->Measure(*String, GEngine->GetMediumFont()->GetLegacySlateFontInfo());
+
+## 获得窗口的宽高
+FSceneViewProjectionData::GetConstrainedViewRect
+可以用ULocalPlayer::GetProjectionData获得FSceneViewProjectionData
+可以用APlayerController::GetLocalPlayer获得ULocalPlayer
+
+## 输出内存信息到磁盘
+控制台下Memreport【UEngine::HandleMemCommand】
+
+## 获得内存信息
+FPlatformMemory::GetStats
+
+## 捕获堆栈信息
+FWindowsPlatformStackWalk::CaptureStackBackTrace
+
+## 怎么在一个死循环里处理游戏循环
+【FAsyncTask】
+【FTaskGraphInterface::Get().WaitUntilTaskCompletes(CompleteHandle);】
+【
+do
+			{
+				CheckRenderingThreadHealth();
+				if (bEmptyGameThreadTasks)
+				{
+					// process gamethread tasks if there are any
+					FTaskGraphInterface::Get().ProcessThreadUntilIdle(ENamedThreads::GameThread);
+				}
+				bDone = Event->Wait(WaitTime);
+			}
+			while (!bDone);
+】
 
 ## 代码到蓝图
 
