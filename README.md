@@ -203,6 +203,9 @@ do
 			while (!bDone);
 】
 
+## 获得当前帧鼠标移动距离
+APlayerController::GetInputMouseDelta
+
 ## 代码到蓝图
 
 ## ModuleRules (2016-10-14 ~ )
