@@ -45,7 +45,7 @@ FScopeLock ScopeLock(&Lock);
 FString::Printf(TEXT("%s 你好。"), TEXT("朋友"))
 
 ## 输出日志
-UE_LOG(LogTemp, Warning, TEXT("%s 你好。"), TEXT("朋友"));
+UE_LOG(LogTemp, Log, TEXT("%s 你好。"), TEXT("朋友"));
 
 ## 输出信息到屏幕
 GEngine->AddOnScreenDebugMessage(-1, 5.0f, FColor::Yellow, TEXT("朋友 你好。"));
@@ -175,6 +175,16 @@ FPlatformMemory::GetStats
 
 ## 捕获堆栈信息
 FWindowsPlatformStackWalk::CaptureStackBackTrace
+
+## 点关闭按钮后做特别处理
+// TSharedPtr<SWindow> ActiveTopLevelWindow = GEngine->GameViewport->GetWindow();
+TSharedPtr<SWindow> ActiveTopLevelWindow = FSlateApplication::Get().GetActiveTopLevelWindow();
+FRequestDestroyWindowOverride RequestDestroyWindowOverride;
+RequestDestroyWindowOverride.BindLambda([](const TSharedRef<SWindow>& WindowBeingClosed)
+{
+	UE_LOG(LogTemp, Log, TEXT("%s 執行了關閉"));
+});
+ActiveTopLevelWindow->SetRequestDestroyWindowOverride(RequestDestroyWindowOverride);
 
 ## 怎么在一个死循环里处理游戏循环
 【FAsyncTask】
