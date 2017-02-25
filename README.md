@@ -206,6 +206,12 @@ do
 ## 获得当前帧鼠标移动距离
 APlayerController::GetInputMouseDelta
 
+## UMaterialInstanceDynamic 设置纹理
+UMaterialInstanceDynamic* MaterialInstanceDynamic = UKismetMaterialLibrary::CreateDynamicMaterialInstance();
+UTexture2D* LoadedTexture = LoadObject<UTexture2D>();
+if (LoadedTexture)
+	MaterialInstanceDynamic->SetTextureParameterValue();
+
 ## 代码到蓝图
 
 ## ModuleRules (2016-10-14 ~ )
