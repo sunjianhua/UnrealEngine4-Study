@@ -212,6 +212,18 @@ UTexture2D* LoadedTexture = LoadObject<UTexture2D>();
 if (LoadedTexture)
 	MaterialInstanceDynamic->SetTextureParameterValue();
 
+## 获得纹理尺寸
+UMaterialInstanceDynamic* MaterialInstanceDynamic = ？？？？？？;
+UTexture* Texture = NULL;
+if (MaterialInstanceDynamic->GetTextureParameterValue(TEXT("tBaseTexture"), Texture))
+{
+	if (Texture->Resource)
+	{
+		SizeX = Texture->Resource->GetSizeX();
+		SizeY = Texture->Resource->GetSizeY();
+	}
+}
+
 ## 代码到蓝图
 
 ## ModuleRules (2016-10-14 ~ )
