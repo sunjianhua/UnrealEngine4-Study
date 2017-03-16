@@ -224,6 +224,30 @@ if (MaterialInstanceDynamic->GetTextureParameterValue(TEXT("tBaseTexture"), Text
 	}
 }
 
+## 绘制自定义网格
+继承这个类：UProceduralMeshComponent
+
+## 检查UActorComponent的标签
+UActorComponent::ComponentHasTag
+
+## 判断组件材质的是否为半透明的混合模式
+UMaterialInterface* MaterialInterface = Component->GetMaterial(???);
+IsTranslucentBlendMode(MaterialInterface->GetBlendMode())
+
+## 克隆一个AActor
+AActor* pTemplate;
+FActorSpawnParameters* params = new FActorSpawnParameters();
+params->Template = pTemplate;
+AActor* newActor = GetWorld()->SpawnActor(pTemplate->GetClass(), 位置, 旋转, *params);
+GetWorld()->AddNetworkActor(newActor);
+
+## 克隆一个UActorComponent组件
+AActor* Actor;
+UActorComponent* ActorComponent = Actor->CreateComponentFromTemplate(要克隆的组件);
+
+ActorComponent->RegisterComponent();
+ActorComponent->AddInstanceComponent(newComponent);
+
 ## 代码到蓝图
 
 ## ModuleRules (2016-10-14 ~ )
