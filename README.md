@@ -3,3 +3,4 @@
 ## [Blueprint 3rd Person Game](Blueprint3rdPersonGame.md)
 ## [Blueprint Twin Stick Shooter](BlueprintTwinStickShooter.md)
 ## [Introductionto Animation & Rigging Tools(ART)](IntroductiontoAnimation&RiggingTools(ART).md)
+## [Turn Based Strategy](TurnBasedStrategy2.md)
