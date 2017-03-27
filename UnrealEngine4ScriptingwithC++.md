@@ -35,8 +35,15 @@ Category：属性字段分组
 ```
 
 ### Specifying a UCLASS as the type of a UPROPERTY
+这个实现的真牛，模板化指针类型的成员变量，优点是在编辑里把符合模板类型的都列出来
+UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Unit)
+TSubclassOf<UObject> UClassOfPlayer;
 
-### Specifying a UCLASS as the type of a UPROPERTY
+这个没有搞明白？？？
+UPROPERTY(EditAnywhere, meta = (MetaClass = "GameMode"), Category = Unit)
+FStringClassReference UClassGameMode;
+
+### Creating a Blueprint from your custom UCLASS
 
 ### Instantiating UObject-derived classes
 
