@@ -44,6 +44,7 @@ UPROPERTY(EditAnywhere, meta = (MetaClass = "GameMode"), Category = Unit)
 FStringClassReference UClassGameMode;
 
 ### Creating a Blueprint from your custom UCLASS
+这个主要是讲怎样在编辑器模式下，通过Window | Developer Tools | Class Viewer，打开Class的树列表，然后在自定义类上创建蓝图的操作流程
 
 ### Instantiating UObject-derived classes
 
