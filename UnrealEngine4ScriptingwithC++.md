@@ -21,6 +21,8 @@ C++类转换蓝图，可以理解为：实现了一个继承c++的蓝图类
 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Stats)
 以下描述是在编辑器模式的情形
 
+下面的蓝图实例是指编辑模式下的蓝图实例而不是运行后的蓝图实例
+
 EditAnywhere：属性字段能在蓝图类或蓝图实例里编辑
 EditDefaultsOnly：属性字段在蓝图类可以编辑，在蓝图实例里不能编辑
 EditInstanceOnly：属性字段在蓝图实例可以编辑，在蓝图类不可以编辑
@@ -47,9 +49,21 @@ FStringClassReference UClassGameMode;
 这个主要是讲怎样在编辑器模式下，通过Window | Developer Tools | Class Viewer，打开Class的树列表，然后在自定义类上创建蓝图的操作流程
 
 ### Instantiating UObject-derived classes
+创建对象的两个方法
+ConstructObject
+NewObject
 
 ### Destroying UObject-derived classes
+ConditionalBeginDestroy
+GetWorld()->ForceGarbageCollection(true)
 
+组件销毁
+USceneComponent::DestroyComponent
+
+BaseEngine.ini 
+gc.TimeBetweenPurgingPendingKillObjects=60
+
+MakeShareable
 ### Creating a USTRUCT
 
 ### Creating a UENUM()
