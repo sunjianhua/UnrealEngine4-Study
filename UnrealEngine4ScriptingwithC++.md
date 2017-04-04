@@ -37,7 +37,7 @@ Category：属性字段分组
 ```
 
 ### Specifying a UCLASS as the type of a UPROPERTY
-这个实现的真牛，模板化指针类型的成员变量，优点是在编辑里把符合模板类型的都列出来
+UClass 实例？？？？？？
 UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Unit)
 TSubclassOf<UObject> UClassOfPlayer;
 
@@ -49,23 +49,78 @@ FStringClassReference UClassGameMode;
 这个主要是讲怎样在编辑器模式下，通过Window | Developer Tools | Class Viewer，打开Class的树列表，然后在自定义类上创建蓝图的操作流程
 
 ### Instantiating UObject-derived classes
-创建对象的两个方法
-ConstructObject
-NewObject
+NewObject【4.8版本后ConstructObject不建议使用】
+
+下面这个写法不用通过TSubclassOf<UObject>到蓝图里指定UClass instance
+NewObject<UObject>(GetTransientPackage(), UObject::StaticClass());
 
 ### Destroying UObject-derived classes
-ConditionalBeginDestroy
+ConditionalBeginDestroy，给要销毁的UObject打标记，根据下面配置的时间，到了后没有用就回收
+x:\UE_4.15\Engine\Config\BaseEngine.ini 
+gc.TimeBetweenPurgingPendingKillObjects=60
+
+如果要立即执行回收
 GetWorld()->ForceGarbageCollection(true)
 
 组件销毁
 USceneComponent::DestroyComponent
 
-BaseEngine.ini 
-gc.TimeBetweenPurgingPendingKillObjects=60
-
-MakeShareable
 ### Creating a USTRUCT
+USTRUCT标记的struct的.h文件，需要手动加上【#include "??????.generated.h"】在编译时会生成实际的【??????.generated.h】文件
+UCLASS标记的class的.h文件，好像不需要手动加上，编译时会自己加？？？
+
+USTRUCT标记的struct需要GENERATED_USTRUCT_BODY()，这个也需要手动加上
 
 ### Creating a UENUM()
+UENUM标记enum可以在编辑器里用，enum里的值用UMETA标记值在编辑器里显示的文字
+
+要在编辑器用，需要用TEnumAsByte声明enum：TEnumAsByte<enumType> enumVar 
 
 ### Creating a UFUNCTION
+函数加上下面的就能在蓝图使用了
+UFUNCTION(BlueprintCallable, Category = Properties)
+
+## Memory Management and Smart Pointers
+### Unmanaged memory – using malloc()/free()
+略
+### Unmanaged memory – using new/delete
+略
+### Managed memory – using NewObject< > and ConstructObject< >
+略
+### Managed memory – deallocating memory
+略
+### Managed memory – smart pointers (TSharedPtr, TWeakPtr, TAutoPtr) to trackan object
+MakeShareable
+### Using TScopedPointer to track an object
+### Unreal's garbage collection system and UPROPERTY()
+### Forcing garbage collection
+### Breakpoints and stepping through code
+### Finding bugs and using call stacks
+### Using the Profiler to identify hot spots
+
+## Actors and Components
+### Creating a custom Actor in C++
+### Instantiating an Actor using SpawnActor
+### Destroying an Actor using Destroy and a Timer
+### Destroying an Actor after a delay using SetLifeSpan
+### Implementing the Actor functionality by composition
+### Loading assets into components using FObjectFinder
+### Implementing the Actor functionality by inheritance
+### Attaching components to create a hierarchy
+### Creating a custom Actor Component
+### Creating a custom Scene Component
+### Creating a custom Primitive Component
+### Creating an InventoryComponent for an RPG
+### Creating an OrbitingMovement Component
+### Creating a building that spawns units
+
+## Handling Events and Delegates
+### Handling events implemented via virtual functions
+### Creating a delegate that is bound to a UFUNCTION
+### Unregistering a delegate
+### Creating a delegate that takes input parameters
+### Passing payload data with a delegate binding
+### Creating a multicast delegate
+### Creating a custom Event
+### Creating a Time of Day handler
+### Creating a respawning pickup for an First Person Shooter
