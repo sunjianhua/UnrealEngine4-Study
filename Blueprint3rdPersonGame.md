@@ -20,15 +20,21 @@
 ### 05 - Setting Up Inputs
 在Project Settings的Engine -Input部分设置 Action/Axis Mappings
 
+TODO：补图
+
 ### 06 - Basic Character Material
 [材质 - 在材质中使用菲涅耳效果](https://docs.unrealengine.com/latest/CHN/Engine/Rendering/Materials/HowTo/Fresnel/index.html)
 
 ？？？
 
+TODO：补图
+
 ### 07 - Blend Spaces
 Blend Space：以时间线串联多个 Animation Sequence，形成一个复合的 Animation Sequence？？？
 
 Blend Space：大概执行逻辑 ？？？
+
+TODO：补图
 
 ### 08 - Intro to Animation Blueprints
 创建一个Animation Blueprints
@@ -49,7 +55,13 @@ Blend Space：大概执行逻辑 ？？？
 1. 动画是否播放完，播放完跳转到下一个状态
 2. 是否在空气中，确定是否跳还是落地
 
+TODO：补图
+
 ### 11 - Animation BP EventGraph
+在动画蓝图的Event Graph里把状态机条件转换时用到的几个状态变量给设置了，包括：速度和是否在空中
+
+判断是否在空中：
+
 ### 12 - Character BP Components
 ### 13 - Character Keyboard & Mouse Controls
 ### 14 - Game Mode & Testing
