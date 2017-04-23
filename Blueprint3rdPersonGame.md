@@ -111,6 +111,10 @@ UCharacterMovementComponent 有一个成员变量 TEnumAsByte<enum EMovementMode
 略
 
 ### 17 - Skeleton Retargeting & Montage Setup
+1. 如果导入的骨骼有错位现象，在 Skeleton Tree，点右键选择：Recursively Set Translation Retargeting Skeleton
+2. 执行上一步后，会出现一个根节点上移现象，对 pelvis 骨骼的 Translation Retargeting 设置为 ： Animation Scaled
+3. 对 root 骨骼的 Translation Retargeting 设置为 ： Animation
+
 ### 18 - Animation BP Punching Setup
 ### 19 - Playing Our Animation Montage
 ### 20 - Using Slot Nodes & Branch Points
