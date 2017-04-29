@@ -1,6 +1,6 @@
 ## [Blueprint 3rd Person Game]
 
-[视频首页](https://docs.unrealengine.com/latest/INT/Videos/PLZlv_N0_O1ga0IoRrpI4xkX4qmCrhGu56/hRO82u1phyw/index.html)
+[教学视频首页](https://docs.unrealengine.com/latest/INT/Videos/PLZlv_N0_O1ga0IoRrpI4xkX4qmCrhGu56/hRO82u1phyw/index.html)
 
 ### 01 - Introduction
 略
@@ -111,15 +111,55 @@ UCharacterMovementComponent 有一个成员变量 TEnumAsByte<enum EMovementMode
 略
 
 ### 17 - Skeleton Retargeting & Montage Setup
+#### 骨骼错位处理
 1. 如果导入的骨骼有错位现象，在 Skeleton Tree，点右键选择：Recursively Set Translation Retargeting Skeleton
 2. 执行上一步后，会出现一个根节点上移现象，对 pelvis 骨骼的 Translation Retargeting 设置为 ： Animation Scaled
 3. 对 root 骨骼的 Translation Retargeting 设置为 ： Animation
 
+#### Montage 操作基础
+1. Montage 是对 Animation Sequence 的再加工，比 Animation Sequence 多了 Slot ？？？
+2. Slot 的作用是只用于动画混合？？？
+3. Slot 由 Sections 组成
+4. 在 Montage 操作界面的 Section 部分，可以放入任意多个Animation Sequence
+5. 在 Section 部分，可以给一个 Animation Sequence 打上若干个Section标签
+6. 也可以给多个 Animation Sequence 打上一个标签
+7. 在 Montage 操作界面的 Sections 部分，可以把任意的 Section 组成一个播放序列
+8. 实际动画播放，就是播放这个序列
+
+#### Montage 播放动画跳转
+1. 教学中用 Montage 做的打拳，分为启动、打、收拳，打分为左右拳，收拳分为左右收拳，对应左右出拳，总共5个 Animation Sequence ？？？
+2. 因为打拳是按键控制，为了确定收拳用那个动画，在 Montage 操作界面的 Notifies 部分 增加两个事件，分别在左右出拳 Animation Sequence 的快结束部分
+3. 在动画蓝图里，监听增加的事件，如果用户松开出拳按键，在那个事件区域，就跳转到对应的收拳 Animation Sequence
+
 ### 18 - Animation BP Punching Setup
+这个主要讲在 Character 蓝图 和 CharacterAnim 蓝图 根据用户的按键 设置是否出拳的变量
+
 ### 19 - Playing Our Animation Montage
+#### 播放 Montage
+1. 在动画蓝图的 Event Graph 部分，增加一个 新事件【Punch】
+2. 在 Event Blueprint Update Animation 里检测玩家是否按了打拳按键
+3. 如果玩家按了打拳按键，调用 DoOnce 调用一次 Punch 事件
+4. Punch 事件，调用 Montage Play 播放打拳
+
+#### 处理 Montage 的 Notifies 事件
+1. 在动画蓝图的 Event Graph 部分，把 【17】 课增加的两个事件通知拖入
+2. 根据玩家是否打拳的变量判断是否收拳
+3. 如果收拳，那么根据对应的事件通知，调用 Montage Set Next Section 跳转到对应的收拳动画
+
 ### 20 - Using Slot Nodes & Branch Points
+
 ### 21 - Add Physics Components for Punching
+这个教学的知识点可以应用到拳打脚踢实现
+
+1. 在 Character 蓝图里的 ViewPort 操作界面，在手部的位置增加两个圆形碰撞体
+2. 选择两个圆形碰撞体，在 Details 面板下的 Collision 部分，把 Collision Presets 设置为：NoCollision【这个目的就是平时无碰撞，只有事件触发才有碰撞】
+3. 在 Character 蓝图里的 Construction Script 操作界面，用 AttachToComponent 函数，把两个圆形碰撞体分别绑定到左右手的骨骼点
+4. 在 Character 蓝图里的 Event Graph 操作界面，在处理出拳按键部分，调用 Set Collision Enabled 函数，当出拳按键按下设置能碰撞，当出拳按键松开设置不能碰撞
+
 ### 22 - Creating Animation Notifies
+1. 在 Animation 动画操作面板，在 Notifies 操作区，点右键，会弹出 Notify 菜单，点 Add Notify 下的 Play Particle Effect，增加粒子效果
+2. 在 Notifies 操作区，选择新增加的粒子标识，在 Details 面板，通过 Socket Name 设置粒子效果，绑定到角色的那个骨骼或插槽
+3. 在 Details 面板，Attached 用来设置粒子是否随骨骼一起运动
 
 这个看完，看以前那个横板动画设置
 1. 绑模型到角色骨骼
