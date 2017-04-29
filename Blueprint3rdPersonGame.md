@@ -118,18 +118,24 @@ UCharacterMovementComponent 有一个成员变量 TEnumAsByte<enum EMovementMode
 
 #### Montage 操作基础
 1. Montage 是对 Animation Sequence 的再加工，比 Animation Sequence 多了 Slot ？？？
-2. Slot 的作用是只用于动画混合？？？
+2. Montage Group 由 Slot 组成
 3. Slot 由 Sections 组成
-4. 在 Montage 操作界面的 Section 部分，可以放入任意多个Animation Sequence
-5. 在 Section 部分，可以给一个 Animation Sequence 打上若干个Section标签
-6. 也可以给多个 Animation Sequence 打上一个标签
-7. 在 Montage 操作界面的 Sections 部分，可以把任意的 Section 组成一个播放序列
-8. 实际动画播放，就是播放这个序列
+4. Slot 的作用是只用于动画混合？？？
+5. 在 Montage 操作界面的 Section 部分，可以放入任意多个Animation Sequence
+6. 在 Section 部分，可以给一个 Animation Sequence 打上若干个Section标签
+7. 也可以给多个 Animation Sequence 打上一个标签
+8. 在 Montage 操作界面的 Sections 部分，可以把任意的 Section 组成一个播放序列
+9. 实际动画播放，就是播放这个序列
 
 #### Montage 播放动画跳转
 1. 教学中用 Montage 做的打拳，分为启动、打、收拳，打分为左右拳，收拳分为左右收拳，对应左右出拳，总共5个 Animation Sequence ？？？
 2. 因为打拳是按键控制，为了确定收拳用那个动画，在 Montage 操作界面的 Notifies 部分 增加两个事件，分别在左右出拳 Animation Sequence 的快结束部分
 3. 在动画蓝图里，监听增加的事件，如果用户松开出拳按键，在那个事件区域，就跳转到对应的收拳 Animation Sequence
+
+#### 设置Slot
+1. 在 Anim Slot Manager 里增加新的 Slot
+2. 在 Montage Group 部分，设置 Slot 为新增加的 Slot
+3. 这个 Slot 主要是标记 Montage？？？方便后面在 CharacterAnim 蓝图里和别的动画混合？？？
 
 ### 18 - Animation BP Punching Setup
 这个主要讲在 Character 蓝图 和 CharacterAnim 蓝图 根据用户的按键 设置是否出拳的变量
@@ -147,6 +153,21 @@ UCharacterMovementComponent 有一个成员变量 TEnumAsByte<enum EMovementMode
 3. 如果收拳，那么根据对应的事件通知，调用 Montage Set Next Section 跳转到对应的收拳动画
 
 ### 20 - Using Slot Nodes & Branch Points
+1. 在  CharacterAnim 蓝图，Anim Graph 的操作区域，点右键，选择从弹出菜单 Cached Poses 下的子菜单 New Save Cached Pose
+2. 把新增加的蓝图节点和状态机节点相连，缓存状态机，以便重复使用状态机数据
+3. 点右键，选择从弹出菜单 Cached Poses 下的子菜单 Use Cached Pose，重复两次
+4. 点右键，选择从弹出菜单 Montage 下的子菜单 Slot 'DefaultSlot'
+5. 选择新增的 Slot 'DefaultSlot' 节点，在 Details 面板下，选择 Slot Name 为 17 课设置的 Slot 名
+6. 点右键，选择从弹出菜单 Blends 下的子菜单 Layered blend per bone
+7. 把两个 Use Cached Pose 节点和一个 Slot 节点与 Layered blend per bone 节点相连接
+8. 选择新增的 Layered blend per bone 节点，在 Details 面板下，找到 Bone Name 设置为开始混合时的起始节点
+
+#### 总结
+1. 这个主要实现了两个动画的混合播放，让一个角色同时做两套动画，一套为 Base Pose，一套是根据设置的 Bone Name，Bone Name对应骨骼以上部分做另一套动画
+2. Base Pose 基本为：由跑、跳、空闲等基本动作构成的 State Machine
+3. 作为 Blend 的另一套动画，基本是 Montage 动画，比如打拳
+4. 这个 Blend 处理后，可以做出一边跑一边打拳，一边跳一边打拳
+5. 大概处理流程是：由事件触发【比如按键】 Montage 动画，Montage 动画播放结束回到 Base Pose 设置的动画
 
 ### 21 - Add Physics Components for Punching
 这个教学的知识点可以应用到拳打脚踢实现
@@ -160,6 +181,9 @@ UCharacterMovementComponent 有一个成员变量 TEnumAsByte<enum EMovementMode
 1. 在 Animation 动画操作面板，在 Notifies 操作区，点右键，会弹出 Notify 菜单，点 Add Notify 下的 Play Particle Effect，增加粒子效果
 2. 在 Notifies 操作区，选择新增加的粒子标识，在 Details 面板，通过 Socket Name 设置粒子效果，绑定到角色的那个骨骼或插槽
 3. 在 Details 面板，Attached 用来设置粒子是否随骨骼一起运动
+
+### 额外知识点
+拖拽 Character 蓝图到场景，在 Details 面板下的 Pawn 组里，设置 Auto Possess Player 为 Player 0，这样运行项目，拖入场景的 Character 蓝图为控制 Character，可以把 Player Start 去掉。
 
 这个看完，看以前那个横板动画设置
 1. 绑模型到角色骨骼
