@@ -1,4 +1,5 @@
 # Garbage Collection & Dynamic Memory Allocation
+[文档网址](https://wiki.unrealengine.com/Garbage_Collection_%26_Dynamic_Memory_Allocation)
 ## Overview
 ## Dynamic Load Object From Asset Path
 ## Disclaimer
