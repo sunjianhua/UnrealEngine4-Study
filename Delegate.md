@@ -25,9 +25,13 @@ Unreal Engine 4 里的 DELEGATE 就是 C++ 函数指针的封装？？？ 因为
  3. Unreal Engine 4 里封装了一次调用多个函数指针的功能：MULTICAST_DELEGATE【这就需要额外多做一步操作，把需要一次调用的函数指针保存在一起】
  4. Unreal Engine 4 里在 C++ 定义的函数指针要在蓝图里使用，可以用：DYNAMIC_DELEGATE
  5. 基于以上，在 Unreal Engine 4 里有三个不同的 delegate 类型
-    | 类型                      | 用法               |
-    | -------------             | -------------     |
-    |Single-cast delegates									|	DECLARE_DELEGATE...() |
+    |u | c | i | f|
+	|----|----|----|----|
+	|unsigned int| 字符串 | int | float|
+
+    | 类型 | 用法 |
+    |-------------|-------------|
+    |Single-cast delegates | DECLARE_DELEGATE...() |
     |Multi-cast delegates									|	DECLARE_MULTICAST_DELEGATE...() |
     |Dynamic (UObject, serializable) delegates				|	DECLARE_DYNAMIC_DELEGATE...() |
  6. 有了封装好的函数指针声明，定义一个函数指针变量就比较方便了，比如：
