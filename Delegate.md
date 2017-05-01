@@ -38,12 +38,34 @@ Unreal Engine 4 里的 DELEGATE 就是 C++ 函数指针的封装？？？ 因为
     
     FPrintSomeText PrintSomeText;
     ~~~
- 7. 给函数指针赋值，在 Unreal Engine 4 里用的是：BindSP、BindRaw、BindStatic、BindLambda 等，这些具体实现可以看 TBaseDelegate
- 8. 调用函数指针指向的函数，在 Unreal Engine 4 里用的是：ExecuteIfBound、Broadcast、ExecuteIfSafe、Execute 等？ 这些具体实现可以看 DelegateSignatureImpl.inl
+ 7. 给函数指针赋值，在 Unreal Engine 4 里用的是：BindSP、BindRaw、BindStatic、BindLambda 等，这些具体实现可以看 TBaseDelegate 【 DELEGATE 的绑定 】
+
+    | 函数                      | 描述               |
+    | -------------             | -------------     |
+    | BindLambda                | 绑定 C++ lambda 函数    |
+    | BindRaw					| 绑定到一个原始的C++指针全局函数代理上。原始指针不使用任何引用，所以如果从代理的底层删除了该对象，那么调用它可能是不安全的。因此，当调用Execute()时一定要小心! |
+    | BindSP                    | 绑定一个基于共享指针的成员函数代理。共享指针代理保持到您的对象的弱引用。您可以使用 ExecuteIfBound() 来调用它们    |
+    | BindUObject               | 绑定一个基于UObject的成员函数代理。UObject 代理保持到您的对象的弱引用。您可以使用 ExecuteIfBound() 来调用它们    |
+    | UnBind                    | 解除绑定该代理     |
+
+ 8. 调用函数指针指向的函数，在 Unreal Engine 4 里用的是：ExecuteIfBound、ExecuteIfSafe、Execute 等？ 这些具体实现可以看 DelegateSignatureImpl.inl 【 DELEGATE 的执行 】
+
+## 单播代理
+[官方文档](https://docs.unrealengine.com/latest/CHN/Programming/UnrealArchitecture/Delegates/index.html)
+
+## 多播代理
+[官方文档](https://docs.unrealengine.com/latest/CHN/Programming/UnrealArchitecture/Delegates/Multicast/index.html)
+
+## 动态代理
+[官方文档](https://docs.unrealengine.com/latest/CHN/Programming/UnrealArchitecture/Delegates/Dynamic/index.html)
+
+## 事件
+【事件】是特定类型的多播代理，虽然任意类均可绑定事件，但只有声明事件的类可以调用事件 的 Broadcast、IsBound 和 Clear 函数。这意味着事件对象可在公共接口中公开，而无需让外部类访问这些敏感度函数。事件使用情况有：在纯抽象类中包含回调、限制外部类调用 Broadcast、IsBound 和 Clear 函数。
+
+[官方文档](https://docs.unrealengine.com/latest/CHN/Programming/UnrealArchitecture/Delegates/Events/index.html)
 
 ## 实际应用
 ### 纯蓝图
 1. 在 Blueprint Class 的 Add Custom Event
 
 ### C++ 实现 蓝图调用
-
