@@ -29,6 +29,7 @@
     GEngine->GameViewport->AddViewportWidgetContent(SNew(SWeakWidget).PossiblyNullContent(NewWidget.ToSharedRef()));
     NewWidget->SetVisibility(EVisibility::Visible);
     ~~~
+    
 ### 编写界面
 
 #### 基本
@@ -36,17 +37,14 @@
         2. void Construct(const FArguments& InArgs);
 
 #### 声明式语法
-        ~~~
         SLATE_BEGIN_ARGS
         SLATE_ARGUMENT
         SLATE_EVENT
         SLATE_NAMED_SLOT
         SLATE_ATTRIBUTE
         SLATE_END_ARGS
-        ~~~
 
 #### 构成【主要是理解Slot】
-    ~~~
     SNew(SHorizontalBox)
     +SHorizontalBox::Slot()
     [
@@ -76,5 +74,3 @@
             ]
         ]
     ]
-    ~~~
-    
