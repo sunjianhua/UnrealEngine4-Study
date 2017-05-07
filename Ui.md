@@ -19,7 +19,7 @@
 ## Slate
 [Slate,_Hello](https://wiki.unrealengine.com/Slate,_Hello)
 
-1. 在 .Build.CS 文件，添加"UMG"、"Slate"模块
+1. 在 .Build.CS 文件，添加"Slate"模块
     ~~~
     PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });
     ~~~
