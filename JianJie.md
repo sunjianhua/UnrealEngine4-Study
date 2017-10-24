@@ -14,7 +14,7 @@ table th:nth-of-type(3) {
 
 <font color = 'blue'> **申请职位：UE4程序** </font>
 <br>
-更好的排版格式看：<a href = "https://github.com/sunjianhua/UnrealEngine4-Study/blob/master/%E6%B1%82%E8%81%8C.md">https://github.com/sunjianhua/UnrealEngine4-Study/blob/master/%E6%B1%82%E8%81%8C.md</a>
+更好的排版格式看：<a href = "https://github.com/sunjianhua/UnrealEngine4-Study/blob/master/JianJie.md">https://github.com/sunjianhua/UnrealEngine4-Study/blob/master/JianJie.md</a>
 
 **文档里出现的链接都是可以点击的，如果点击链接没响应，换一个别的pdf阅读器尝试【推荐用Chrome浏览器打开】**
 
