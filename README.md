@@ -1,6 +1,6 @@
 ## [知识点记录](笔记.md)
 ## [描边效果](https://www.zybuluo.com/dfw10011/note/710049)
-## 需要完善 / 补完 部分
+## 下面为需要完善 / 补完 部分
 ## [DELEGATE](Delegate.md)
 ## [第一人称射击游戏教程 学习](https://www.zybuluo.com/dfw10011/note/628421)
 ## [Blueprint 3rd Person Game](Blueprint3rdPersonGame.md)
