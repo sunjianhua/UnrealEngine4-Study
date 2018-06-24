@@ -167,7 +167,7 @@ table th:nth-of-type(3) {
 
 2. 2016.9 ～ 2017.11 基于UE4开发了多个互联网家装相关的项目，一：<a href="http://vidahouse.com/">vidahouse</a>（<a href="https://v.qq.com/x/page/e0362wl7bwa.html">演示</a>）【VR室内设计软件、业务逻辑程序、UE4 + VXG、c++】。二：触屏全景交互展示（<a href="http://v.youku.com/v_show/id_XMzEwMjIzMTUxMg==.html?spm=a2hzp.8244740.0.0">演示1</a>，<a href="http://v.youku.com/v_show/id_XMzEwMjIyNTM1Ng==.html?spm=a2hzp.8244740.0.0">演示2</a>）【主程序、UE4、蓝图 + c++ + Python】。三：商用飞机展示【初期的设计、规划、任务分配 + 地形绘制，UE4 + World Machine + UE4-OceanProject，蓝图 + c++，一个VR项目，在初期设计时，就围绕VR的特性进行设计，比如全3D UI，移动、交互等】
 
-3. 2015～2016 开发了三款手游，一：<a href="http://www.yxdown.com/mzt/evasgz/?baidutj">EVA适格者</a>【客户端程序 + 服务器程序、cocos2d-x + Spine + 物理模块、lua】。二：<a href="http://newgame.17173.com/game-review-4047573.html">魂器学院</a>【客户端程序、cocos2d-x、lua】。三：<a href="http://v.youku.com/v_show/id_XMTQwODk0MTIwMA==.html?spm=a2hzp.8253869.0.0">血战宣城【手游】</a>【客户端主程序、cocos2d-x、c++】。
+3. 2015～2016 开发了三款手游，一：<a href="http://www.yxdown.com/mzt/evasgz/?baidutj">EVA适格者</a>【客户端程序 + 服务器程序、cocos2d-x + Spine + 物理模块、lua】。二：<a href="https://www.taptap.com/app/42949">魂器学院</a>【客户端程序、cocos2d-x、lua】。三：<a href="http://v.youku.com/v_show/id_XMTQwODk0MTIwMA==.html?spm=a2hzp.8253869.0.0">血战宣城【手游】</a>【客户端主程序、cocos2d-x、c++】。
 
 4. 2013～2014 自己做手游开发。
 5. 2011 ～2012 做应用分发平台。
