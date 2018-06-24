@@ -61,11 +61,7 @@ table th:nth-of-type(3) {
         <td>一个VR项目，在初期设计时，就围绕VR的特性进行设计，比如全3D UI，移动、交互等</td>
     </tr>
     <tr>
-        <td>学习UE4跟教程做的小Demo</td>
-        <td>程序</td>
-        <td>UE4</td>
-        <td>蓝图</td>
-        <td><a href="http://v.youku.com/v_show/id_XMTcwOTY5ODUxMg==.html?spm=a2hzp.8253869.0.0">http://t.cn/RWV1PsJ</a></td>
+        <td colspan="5">手游项目</td>
     </tr>
     <tr>
         <td>EVA适格者【手游】</td>
@@ -79,7 +75,7 @@ table th:nth-of-type(3) {
         <td>客户端程序</td>
         <td>cocos2d-x</td>
         <td>lua</td>
-        <td>专题页面<br><a href="http://newgame.17173.com/game-review-4047573.html">http://t.cn/RWVmqLq</a><br>参与的是初期版本【演示视频】<br><a href="http://v.youku.com/v_show/id_XMTQwMTY5NjA2MA==.html?spm=a2hzp.8253869.0.0">http://t.cn/RWVn8LM</a><br>最终上线的版本<br><a href="https://www.taptap.com/app/42949">https://www.taptap.com/app/42949</a></td>
+        <td>专题页面<br><a href="http://newgame.17173.com/game-review-4047573.html">http://t.cn/RWVmqLq</a><br>最终上线的版本<br><a href="https://www.taptap.com/app/42949">https://www.taptap.com/app/42949</a></td>
     </tr>
     <tr>
         <td>血战宣城【手游】</td>
