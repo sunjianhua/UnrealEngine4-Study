@@ -92,6 +92,9 @@ table th:nth-of-type(3) {
         <td>演示用Hero Academy资源，写了一个工具转Hero Academy骨骼到Spine格式<br>视频最后演示MyGui移植到cocos2d-x<br><br><a href="https://v.qq.com/x/page/g01410fhe2m.html">http://t.cn/RWVu7Pl</a></td>
     </tr>
     <tr>
+        <td colspan="5">开源内容</td>
+    </tr>
+    <tr>
         <td>开源的cocos2d-x工具和控件</td>
         <td>全部程序</td>
         <td>cocos2d-x / PhotoShop脚本</td>
