@@ -44,7 +44,7 @@ table th:nth-of-type(3) {
         <td>业务逻辑程序【根据策划案实现相应业务逻辑】</td>
         <td>UE4 + VXGI</td>
         <td>c++</td>
-        <td>官网<br><a href="http://vidahouse.com/product">http://vidahouse.com/</a><br>演示<br><a href="https://v.qq.com/x/page/e0362wl7bwa.html">http://t.cn/RWVevVp</a><br><a href="https://v.qq.com/x/page/s0383iffuwu.html">http://t.cn/RWVrxfy</a></td>
+        <td>官网<br><a href="http://vidahouse.com">http://vidahouse.com/</a><br>演示<br><a href="https://v.qq.com/x/page/e0362wl7bwa.html">http://t.cn/RWVevVp</a><br><a href="https://v.qq.com/x/page/s0383iffuwu.html">http://t.cn/RWVrxfy</a></td>
     </tr>
     <tr>
         <td>触屏全景交互展示</td>
