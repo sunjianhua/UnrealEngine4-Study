@@ -34,10 +34,10 @@ table th:nth-of-type(3) {
     </tr>
     <tr>
         <td>仿制【绝地求生】网游</td>
-        <td>从头独立开发模块：跳伞、游泳、卧倒、换装、断线重连等。参与完善模块：车辆、运动系统、镜头系统、枪械系统等。中后期主要完善和维护的模块：枪械、运动系统、镜头系统</td>
-        <td>UE4 + VXGI</td>
-        <td>c++</td>
-        <td>官网<br><a href="http://vidahouse.com/product">http://vidahouse.com/product</a><br>演示<br><a href="https://v.qq.com/x/page/e0362wl7bwa.html">http://t.cn/RWVevVp</a><br><a href="https://v.qq.com/x/page/s0383iffuwu.html">http://t.cn/RWVrxfy</a></td>
+        <td>从头独立开发模块：【跳伞、游泳、卧倒、换装、断线重连等】。参与完善模块：【车辆、机甲、运动系统、镜头系统、枪械系统等】。中后期主要完善和维护的模块：【枪械系统、运动系统、镜头系统】</td>
+        <td>UE4</td>
+        <td>c++ + 蓝图</td>
+        <td><br>演示<br><a href="https://v.qq.com/x/page/e0362wl7bwa.html">http://t.cn/RWVevVp</a><br><a href="https://v.qq.com/x/page/s0383iffuwu.html">http://t.cn/RWVrxfy</a></td>
     </tr>
     <tr>
         <td>vidahouse【VR室内设计软件】</td>
