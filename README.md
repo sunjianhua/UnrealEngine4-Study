@@ -1,4 +1,3 @@
-## [知识点记录](笔记.md)
 ## [描边效果](https://www.zybuluo.com/dfw10011/note/710049)
 ## 下面为需要完善 / 补完 部分
 ## [DELEGATE](Delegate.md)
